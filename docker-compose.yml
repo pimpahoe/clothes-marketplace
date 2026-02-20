@@ -1,0 +1,39 @@
+version: '3.9'
+ 
+services:
+ 
+  # ── БАЗА ДАННЫ (потом заполним нужными данными)  ──────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: marketplace
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+ 
+  # ── ХРАНИЛИЩЕ ФОТО (как и здесь)───────────────────────────
+  minio:
+    image: minio/minio
+    command: server /data --console-address ':9001'
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - minio_data:/data
+    ports:
+      - '9000:9000'   # API
+      - '9001:9001'   # Web UI
+ 
+  # ── REDIS (сессии между инстансами) ──────────
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+ 
+volumes:
+  postgres_data:
+  minio_data:
