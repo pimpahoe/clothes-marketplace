@@ -1,0 +1,45 @@
+.header {
+  background: #000000;
+  color: white;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #222;
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  text-decoration: none;
+  color: white;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.header nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.header nav a {
+  color: #999;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  font-weight: 400;
+}
+
+.header nav a:hover {
+  color: white;
+}
